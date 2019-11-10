@@ -284,7 +284,7 @@ sudo service nginx restart
 
 uWSGI 是一个 Web 服务器，它实现了 WSGI 协议、uwsgi、http 等协议。Nginx 中HttpUwsgiModule 的作用是与 uWSGI 服务器进行交换。WSGI 是一种 Web 服务器网关接口。它是一个 Web 服务器（如 nginx，uWSGI 等服务器）与 web 应用（如用 Flask 框架写的程序）通信的一种规范。要注意 WSGI / uwsgi / uWSGI 这三个概念的区分。WSGI 是一种通信协议。uwsgi 是一种线路协议而不是通信协议，在此常用于在 uWSGI 服务器与其他网络服务器的数据通uWSGI 是实现了 uwsgi 和 WSGI 两种协议的 Web 服务器。
 
-### 七、Nginx 和 uWISG 服务器之间如何配合工作的？
+#### Nginx 和 uWISG 服务器之间如何配合工作的？
 
  首先浏览器发起 http 请求到 nginx 服务器，Nginx 根据接收到请求包，进行 url 分析，判断访问的资源类型，如果是静态资源，直接读取静态资源返回给浏览器，如果请求的是动态资源就转交给 uwsgi服务器，uwsgi 服务器根据自身的 uwsgi 和 WSGI 协议，找到对应的后台框架，后台框架下的应用进行逻辑处理后，将返回值发送到 uwsgi 服务器，然后 uwsgi 服务器再返回给 nginx，最后 nginx将返回值返回给浏览器进行渲染显示给用户。
 
